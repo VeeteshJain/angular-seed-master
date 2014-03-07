@@ -5,29 +5,44 @@
 describe('these are all my controllers', function(){
   		
   		
-		var $scope = null;
+		    var $scopee = null;
+        var $scope = null;
         var ctrl = null;
+        var ctrl2 = null;
+        var service = null;
+        var sscope = null;
+        beforeEach(angular.mock.module('myService'));
         beforeEach(angular.mock.module('myApp.controllers'));
         /*beforeEach(inject(function ($injector) {
             $scope = $injector.get('$rootScope');
             $controller = $injector.get('$controller');
         }));*/
-		beforeEach(angular.mock.inject(function(_$compile_, _$rootScope_,_$controller_){
+		beforeEach(angular.mock.inject(function($compile, $rootScope,$controller,myService){
       // The injector unwraps the underscores (_) from around the parameter names when matching
       //$compile = _$compile_;
-      $scope = _$rootScope_;
-
-      ctrl = _$controller_('MyCtrl3', {
-      $scope: $scope
-    });
-
-      //_$controller_
+      //$scope = _$rootScope_;
+      sscope = $rootScope.$new();
+      service = myService;
+      //ctrl2 = service.rootValGetterService();
+      console.log(ctrl2);
+      ctrl = $controller("MyCtrl1", {$scope: sscope});
     }));
 
+    it("can be instantiated", function() {
+        expect(sscope).toBeDefined();
+        //expect(ctrl).
+        expect(service).not.toBeNull();
+    });
 
   it('should ....', inject(function() {
     //spec body
-    expect($scope.name).toBeDefined();
+    //expect($scope.name).toBeDefined();
+    //expect(service.myServiceReturn).toBeDefined();
+    //test
+    expect(service.test).toBeDefined();
+    //expect(sscope.name).toBeDefined();
+    
+    //myServiceReturn
 
   }));
 

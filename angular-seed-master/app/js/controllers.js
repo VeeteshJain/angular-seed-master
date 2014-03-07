@@ -2,12 +2,17 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', []).
+angular.module('myApp.controllers', ['serverDataAccessService']).
   controller('MyCtrl1', [function() {
 
   }])
-  .controller('MyCtrl2', [function() {
-
+  .controller('MyCtrl2', ['$scope',"serverDataAccessService",function($scope,serverDataAccessService) {
+    // $scope.name = 'bob';
+    $scope.ddata = serverDataAccessService.getDataJson("emp.json").then(function(data){
+    //console.log("MM "+$scope.ddata.firstName);
+    $scope.ddata = data;
+    //console.log($scope.ddata.firstName);
+    });
   }])
   .controller('MyCtrl3', ['$scope', 'myService' ,function($scope,myService) {
     
