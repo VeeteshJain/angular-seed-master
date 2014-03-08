@@ -7,7 +7,8 @@
 			var data=null;
 			$http.get("data/"+url).success(function(data,status) {
 				data = angular.fromJson(data);
-				console.log("MMY "+data);
+				/*//add this line to see that testing will detect and error since you have altered the expected result by service
+				data.firstName = "veet";*/
 				deferred.resolve(data);
 		});
 		return deferred.promise;

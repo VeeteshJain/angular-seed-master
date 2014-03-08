@@ -11,7 +11,10 @@ describe('these are all my controllers', function(){
         var ctrl2 = null;
         var service = null;
         var sscope = null;
+        var sscopee = null;
         beforeEach(angular.mock.module('myService'));
+        /*"myApp.controllers" has "MyCtrl2" which has some dependency on module "serverDataAccessService"
+        so we need to mock the module which has that dependency*/
         beforeEach(angular.mock.module('myApp.controllers'));
         /*beforeEach(inject(function ($injector) {
             $scope = $injector.get('$rootScope');
@@ -19,13 +22,18 @@ describe('these are all my controllers', function(){
         }));*/
 		beforeEach(angular.mock.inject(function($compile, $rootScope,$controller,myService){
       // The injector unwraps the underscores (_) from around the parameter names when matching
-      //$compile = _$compile_;
-      //$scope = _$rootScope_;
+
+      //"$rootScope" is needed if we want to get "$scope" object from controller .
       sscope = $rootScope.$new();
+      sscopee = $rootScope.$new();
+
       service = myService;
       //ctrl2 = service.rootValGetterService();
       console.log(ctrl2);
+      
+      //to get controller instance and "{$scope: sscope}" will get '$scope' from controller to "sscope" of "Spec"
       ctrl = $controller("MyCtrl1", {$scope: sscope});
+      ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     }));
 
     it("can be instantiated", function() {
