@@ -2,7 +2,7 @@
 
 /* Controllers */
 
-angular.module('myApp.controllers', ['serverDataAccessService']).
+angular.module('myApp.controllers', ['serverDataAccessService',"myService"]).
   controller('MyCtrl1', [function() {
 
   }])
@@ -22,4 +22,9 @@ angular.module('myApp.controllers', ['serverDataAccessService']).
     $scope.todos = {'home':["one","two","three","four"]};
     $scope.tt = {"id": 1,"name": "Foo","price": 123,"tags": [ "Bar", "Eek" ],"stock": {"warehouse": 300,"retail": 20}};
     //$scope.tt = angular.fromJson(tt);
+
+    $scope.greet = function(msg){
+          $scope.greeting = "Hello hi "+msg+" !";
+    };
+
 }]);

@@ -1,5 +1,5 @@
 	
-	angular.module('serverDataAccessService',[]).factory('serverDataAccessService',["$q","$http",function($q,$http){
+	angular.module('serverDataAccessService',["myService"]).factory('serverDataAccessService',["$q","$http","rootValGetterService",function($q,$http,rootValGetterService){
 
 		//var test=12;
 		 getDataJson = function(url){
@@ -9,7 +9,11 @@
 				data = angular.fromJson(data);
 				/*//add this line to see that testing will detect and error since you have altered the expected result by service
 				data.firstName = "veet";*/
+
+				//"deferred.resolve(data);" by this line "data" is been resolved by "$q" is above this only not after this 
 				deferred.resolve(data);
+				data = rootValGetterService.getVal();
+				//deferred.resolve(data);
 		});
 		return deferred.promise;
 	}
@@ -20,7 +24,8 @@
 
 		return{
 			getDataJson:getDataJson,
-			postDataJson:postDataJson
+			postDataJson:postDataJson,
+			rootValGetterService:rootValGetterService
 		};
 		
 	}]);

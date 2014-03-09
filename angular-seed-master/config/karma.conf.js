@@ -29,7 +29,7 @@ module.exports = function(config){
             'karma-jasmine',
             'karma-jasmine',
              'karma-requirejs',
-             'karma-coverage',
+             'karma-coverage',//npm install -g karma-coverage@0.1.2
              'karma-junit-reporter',
              'karma-phantomjs-launcher',
              'karma-chrome-launcher',
@@ -40,6 +40,12 @@ module.exports = function(config){
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
+    },
+    preprocessors: { 'app/js/*.js': 'coverage' },
+    reporters: ['progress','coverage'],
+    coverageReporter: {
+      type : 'html',
+      dir : 'test/coverage/'
     }
 
 })}

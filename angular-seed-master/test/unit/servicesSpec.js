@@ -3,9 +3,14 @@
 /* jasmine specs for services go here */
 /*for service Spec 
 1>how to get service instance
-2>how to get controller instance*/
+2>how to get controller instance
+3>how to mock Http service
+4>managring dependency of services and controller 
+*/
 
-describe('service', function() {
+//we have two describe for Grouping Related Specs 
+describe('service ', function() {
+	describe(' testing', function() {
 	//global Spec variable section 
 	var testRootValGetterService = null;
 	var testServerDataAccessService = null;
@@ -44,13 +49,14 @@ describe('service', function() {
 
   it('testing for serverDataAccessService() service' , function(){
 
+  		//this is for what backend should reply
   		var httpBackendReturn = '{"firstName": "John","lastName": "Smith","age": 25,"address": {"streetAddress": "21 2nd Street","city": "New York","state": "NY","postalCode": 10021},"phoneNumbers": [{"type": "home","number": "212 555-1234"},{"type": "fax","number": "646 555-4567"}]}';
   		httpBackend.expectGET('data/emp.json').respond(httpBackendReturn);
 
         expect(testServerDataAccessService.getDataJson).toBeDefined();
         expect(testServerDataAccessService.postDataJson).toBeDefined();
-        //var deferred = q.defer();
-        //console.log("qq");
+
+        //now calling the service
         var result = null;
         var promise = testServerDataAccessService.getDataJson("emp.json");
         promise.then(function(data){
@@ -60,10 +66,13 @@ describe('service', function() {
         console.log("aaa "+result.firstName);
         var httpBackendReturnJson = angular.fromJson(httpBackendReturn);
         expect(result).not.toBe(null);
-        //expect(result).toBeSimilarTo(httpBackendReturn);
         expect(result).toEqual(httpBackendReturnJson);
+
+		//expect(testServerDataAccessService.rootValGetterService.getVal).toHaveBeenCalled();
+        expect(testServerDataAccessService.rootValGetterService).toBeDefined();
         
         
   });
 
+});
 });
