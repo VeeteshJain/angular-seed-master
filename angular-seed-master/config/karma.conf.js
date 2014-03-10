@@ -41,7 +41,7 @@ module.exports = function(config){
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
     },
-    preprocessors: { 'app/js/*.js': 'coverage' },
+    preprocessors: { 'app/js/**/*.js': 'coverage' },
     reporters: ['progress','coverage'],
     coverageReporter: {
       type : 'html',

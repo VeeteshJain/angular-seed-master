@@ -4,6 +4,7 @@
 
 describe("A spy", function() {
   var foo, bar = null;
+  var setBar = null;
 
   beforeEach(function() {
     foo = {
@@ -16,8 +17,17 @@ describe("A spy", function() {
       }
     };
 
+    /*setBar = function(value) {
+        bar = value;
+        console.log("setBar "+bar);
+      };*/
+
+
 	//A spy can stub any function and tracks calls to it and all arguments
     spyOn(foo, 'setBar');
+    //spyOn(setBar);
+    //setBar(1234);
+
     //the spy will still track all calls to it but in addition it will delegate to the actual implementation.
     //spyOn(foo, 'getBar').and.callThrough();
 
@@ -27,8 +37,19 @@ describe("A spy", function() {
     console.log("ZZ2 "+bar);
   });
 
-  xit("tracks that the spy was called", function() {
+  it("is useful for comparing arguments", function() {
+      var foo = jasmine.createSpy('foo');
+      foo(12, function() {
+        return true;
+      });
+
+      expect(foo).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
+      //expect(foo).toBe(jasmine.any(Function));
+    });
+
+  it("tracks that the spy was called", function() {
     expect(foo.setBar).toHaveBeenCalled();
+    //expect(setBar).toHaveBeenCalled();
   });
 
   xit("tracks all the arguments of its calls", function() {

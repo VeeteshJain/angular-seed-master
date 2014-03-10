@@ -27,4 +27,9 @@ angular.module('myApp.controllers', ['serverDataAccessService',"myService"]).
           $scope.greeting = "Hello hi "+msg+" !";
     };
 
+    function defaultGreet()
+    {
+      $scope.greeting = "Hello hi default Greet !";
+    }
+
 }]);

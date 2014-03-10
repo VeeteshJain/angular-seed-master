@@ -12,6 +12,8 @@ describe('these are all my controllers', function(){
         var service = null;
         var sscope = null;
         var sscopee = null;
+        var controller = null;
+        var rootScope = null;
         beforeEach(angular.mock.module('myService'));
         /*"myApp.controllers" has "MyCtrl2" which has some dependency on module "serverDataAccessService"
         so we need to mock the module which has that dependency*/
@@ -28,13 +30,22 @@ describe('these are all my controllers', function(){
       sscopee = $rootScope.$new();
 
       service = myService;
+      controller = $controller;
+      rootScope = $rootScope;
       //ctrl2 = service.rootValGetterService();
       console.log(ctrl2);
-      
+
       //to get controller instance and "{$scope: sscope}" will get '$scope' from controller to "sscope" of "Spec"
       ctrl = $controller("MyCtrl1", {$scope: sscope});
       ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     }));
+
+    it('should see the controller', function() {
+      //testing is specified controller is there or not .and we need to give this controller an scope otherwise it will fail the test case.
+        expect(controller('MyCtrl3',{$scope:rootScope.$new()})).toBeTruthy();
+        //expect(  ).toBe(true);
+        console.log( "MM "+angular.isFunction( controller('MyCtrl3',{$scope:rootScope.$new()}).defaultGreet) );
+    });
 
     it("can be instantiated", function() {
         expect(sscope).toBeDefined();

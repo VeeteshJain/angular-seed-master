@@ -6,6 +6,12 @@
 2>how to get controller instance
 3>how to mock Http service
 4>managring dependency of services and controller 
+
+sites:-
+1>for jasmine 				https://github.com/JamieMason/Jasmine-Matchers
+							https://github.com/mattfysh/cheat-sinon-jasmine
+							http://tobyho.com/2011/12/15/jasmine-spy-cheatsheet/
+2>jasmine for angular 		http://www.benlesh.com/2013/06/angular-js-unit-testing-services.html
 */
 
 //we have two describe for Grouping Related Specs 
