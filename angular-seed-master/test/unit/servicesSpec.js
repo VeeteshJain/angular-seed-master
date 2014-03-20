@@ -48,7 +48,7 @@ describe('service ', function() {
 
   it('testing for rootValGetterService() service' , function(){
 
-  		var value = "12345";
+  		var value = "123456";
   		//service function all and checking expected result retured by that function
         expect(testRootValGetterService.getVal()).toBe(value);
   });
