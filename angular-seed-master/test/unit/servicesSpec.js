@@ -43,17 +43,20 @@ describe('service ', function() {
             q = $injector.get('$q');
             httpBackend = $injector.get('$httpBackend');
         });
-      testMyCtrl1 = $controller('MyCtrl1');
+
+      //if we not have below line then it will thow an error "Error: [$injector:unpr] Unknown provider: $scopeProvider <- $scope"
+      var $scope = $rootScope.$new();
+      testMyCtrl1 = $controller('MyCtrl1',{$scope:$scope} );
     }));
 
-  it('testing for rootValGetterService() service' , function(){
+  it('testing for rootValGetterService() service 1' , function(){
 
-  		var value = "123456";
+  		var value = "12345";
   		//service function all and checking expected result retured by that function
         expect(testRootValGetterService.getVal()).toBe(value);
   });
 
-  it('testing for serverDataAccessService() service' , function(){
+  it('testing for serverDataAccessService() service 2' , function(){
 
   		//this is for what backend should reply
   		var httpBackendReturn = '{"firstName": "John","lastName": "Smith","age": 25,"address": {"streetAddress": "21 2nd Street","city": "New York","state": "NY","postalCode": 10021},"phoneNumbers": [{"type": "home","number": "212 555-1234"},{"type": "fax","number": "646 555-4567"}]}';
