@@ -4,6 +4,7 @@
 
 describe('directives', function() {
   var element;
+  var $scope;
   beforeEach(function(){
     
     angular.mock.module('myApp.services');
@@ -14,13 +15,20 @@ describe('directives', function() {
       });
 
     angular.mock.inject(function($compile, $rootScope) {
-      var $scope = $rootScope;
+      $scope = $rootScope;
       element = angular.element('<span app-version></span>');
       $compile(element)($rootScope);
   });
+
+    angular.mock.inject(function($compile, $rootScope) {
+      $scope = $rootScope.$new();
+      element = angular.element('<div search>search</div>');
+      $compile(element)($rootScope);
   });
 
-  describe('app-version', function() {
+  });
+
+  xdescribe('app-version', function() {
     it('should print current version', function() {
 
       expect(element.text()).toEqual('TEST_VER');
@@ -28,4 +36,14 @@ describe('directives', function() {
 
     });
   });
+
+  describe('search', function() {
+
+    it('should call searchService', function() {
+      console.log(element.children().length);
+      console.log( $scope);
+    });
+
+  });
+
 });

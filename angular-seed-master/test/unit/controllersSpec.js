@@ -33,7 +33,7 @@ describe('these are all my controllers', function(){
       controller = $controller;
       rootScope = $rootScope;
       //ctrl2 = service.rootValGetterService();
-      console.log(ctrl2);
+      //console.log(ctrl2);
 
       //to get controller instance and "{$scope: sscope}" will get '$scope' from controller to "sscope" of "Spec"
       ctrl = $controller("MyCtrl1", {$scope: sscope});

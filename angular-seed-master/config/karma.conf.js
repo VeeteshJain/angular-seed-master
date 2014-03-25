@@ -3,17 +3,35 @@ module.exports = function(config){
     basePath : '../',
 
     files : [
+    // serve html fixtures
+      { pattern: "test/fixtures/*.html", watched: true, served: true, included: false },
+
+      // dependencies
+      "app/lib/jquery.min.js",
+
+      // test helper code
+      "test/helpers/jasmine-jquery.js",
+
+      // set jasmine fixtures path
+      // includes only this line: jasmine.getFixtures().fixturesPath = "base/test/fixtures/";
+      "test/helpers/fixtures.js",
+
+      // code you want to test
+      "app/js/jquery_app.js",
+
+      // test code
+      "test/unit/jquery_appSpec.js",
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
       'test/lib/angular/angular-mocks.js',
       'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'test/unit/*.js'
     ],
 
     exclude : [
-      'app/lib/angular/angular-loader.js',
-      'app/lib/angular/*.min.js',
-      'app/lib/angular/angular-scenario.js'
+      //'app/lib/angular/angular-loader.js',
+      //'app/lib/angular/*.min.js',
+      //'app/lib/angular/angular-scenario.js'
     ],
 
     autoWatch : true,

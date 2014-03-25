@@ -6,6 +6,11 @@ angular.module('myApp.controllers', ['serverDataAccessService',"myService"]).
   controller('MyCtrl1', ['$scope',function($scope) {
     $scope.data = ['A','1','B','2','C','3','D','4','E','5','F','6','G','7'];
     $scope.colors = ['black','white','red','blue','yellow'];
+    $scope.testJquery  = function(){
+      //var html = '<h1>hello world!</h1>';
+      //angular.element( document.querySelector(".testJquery") );
+      console.log("yep testJquery called");
+    };
 
   }])
   .controller('MyCtrl2', ['$scope',"serverDataAccessService",function($scope,serverDataAccessService) {
