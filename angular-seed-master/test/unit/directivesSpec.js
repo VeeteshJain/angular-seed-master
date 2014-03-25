@@ -41,7 +41,7 @@ describe('directives', function() {
 
     it('should call searchService', function() {
       console.log(element.children().length);
-      console.log( $scope);
+      //console.log( $scope);
     });
 
   });

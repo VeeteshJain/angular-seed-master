@@ -14,6 +14,7 @@ var $scopee = null;
     spyOn($, "ajax");
 
         angular.mock.module('myService');
+        angular.mock.module('serverDataAccessService');
         /*"myApp.controllers" has "MyCtrl2" which has some dependency on module "serverDataAccessService"
         so we need to mock the module which has that dependency*/
         angular.mock.module('myApp.controllers');
@@ -27,6 +28,7 @@ var $scopee = null;
       //"$rootScope" is needed if we want to get "$scope" object from controller .
       sscope = $rootScope.$new();
       sscopee = $rootScope.$new();
+      $scope = $rootScope.$new();
 
       service = myService;
       controller = $controller;
@@ -39,13 +41,16 @@ var $scopee = null;
       ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     });
 
+    console.log(sscope);
+    //sscope.$apply();
+    //sscopee.$apply();
   });
 
   it("contains function to answer all the questions", function() {
-    expect(App.superSmartFunction()).toBe(42);
+    //expect(App.superSmartFunction()).toBe(42);
     //expect(true).toBe(false);
-    console.log(sscope);
-    spyOn(sscope,"testJquery").andcallthrough();
+    //console.log(sscope);
+    spyOn(sscope,"testJquery").andCallThrough();
     sscope.testJquery();
     expect(sscope.testJquery).toHaveBeenCalled();
   });

@@ -44,7 +44,9 @@ describe('these are all my controllers', function(){
       //testing is specified controller is there or not .and we need to give this controller an scope otherwise it will fail the test case.
         expect(controller('MyCtrl3',{$scope:rootScope.$new()})).toBeTruthy();
         //expect(  ).toBe(true);
-        console.log( "MM "+angular.isFunction( controller('MyCtrl3',{$scope:rootScope.$new()}).defaultGreet) );
+        //console.log( "MM "+angular.isFunction( controller('MyCtrl3',{$scope:rootScope.$new()}).defaultGreet) );
+
+
     });
 
     it("can be instantiated", function() {
