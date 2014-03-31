@@ -12,6 +12,7 @@ sites:-
 							https://github.com/mattfysh/cheat-sinon-jasmine
 							http://tobyho.com/2011/12/15/jasmine-spy-cheatsheet/
 2>jasmine for angular 		http://www.benlesh.com/2013/06/angular-js-unit-testing-services.html
+http://yearofmoo-articles.github.io/angularjs-testing-article/app/#!/videos/i9MHigUZKEM
 */
 
 //we have two describe for Grouping Related Specs 
@@ -72,7 +73,7 @@ describe('service ', function() {
         	result = data;
         });
         httpBackend.flush();
-        console.log("aaa "+result.firstName);
+        //console.log("aaa "+result.firstName);
         var httpBackendReturnJson = angular.fromJson(httpBackendReturn);
         expect(result).not.toBe(null);
         expect(result).toEqual(httpBackendReturnJson);

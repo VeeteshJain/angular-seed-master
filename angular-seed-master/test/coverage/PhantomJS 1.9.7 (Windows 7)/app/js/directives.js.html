@@ -179,20 +179,20 @@
     </style>
 </head>
 <body>
-<div class="header medium">
+<div class="header low">
     <h1>Code coverage report for <span class="entity">./app/js/directives.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">70% <small>(7 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">46.15% <small>(6 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">57.14% <small>(4 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">28.57% <small>(2 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">70% <small>(7 / 10)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">46.15% <small>(6 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./app/js\</a> &#187; directives.js</div>
@@ -231,7 +231,14 @@
 30
 31
 32
-33</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+33
+34
+35
+36
+37
+38
+39
+40</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -241,20 +248,27 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -268,25 +282,32 @@
 /* Directives */
 &nbsp;
 &nbsp;
-angular.module('myApp.directives', []).
+angular.module('myApp.directives', ['myApp.services']).
   directive('appVersion', ['version', 'rootValGetterServiceQQ' ,function(version,rootValGetterServiceQQ) {
   	var data = rootValGetterServiceQQ.getVal();
     return function(scope, elm, attrs) {
+      console.log("I am link function of appVersion");
       elm.text(version);
       //elm.text(data);
     };
   }]).
-  directive('search',['searchService',function(searchService){
-  	return{
+  directive('search',['searchService',<span class="fstat-no" title="function not covered" >function(searchService){</span>
+<span class="cstat-no" title="statement not covered" >  	return{</span>
   		restrict:'A',
-  		link:function(scope,element,attrs){
+  		link:<span class="fstat-no" title="function not covered" >function(scope,element,attrs){</span>
   			//alert("I am working");
-        searchService.getPersons("abc").then(
+<span class="cstat-no" title="statement not covered" >        console.log("i am a dir link function");</span>
+<span class="cstat-no" title="statement not covered" >        searchService.getPersons("abc").then(</span>
 <span class="fstat-no" title="function not covered" >          function(success){</span>
 <span class="cstat-no" title="statement not covered" >            scope.data = success;</span>
+<span class="cstat-no" title="statement not covered" >            console.log("success");</span>
           },
-<span class="fstat-no" title="function not covered" >          function(error){<span class="cstat-no" title="statement not covered" ></span>console.log(error);}</span>,
-<span class="fstat-no" title="function not covered" >          function(notify){<span class="cstat-no" title="statement not covered" ></span>console.log(notify);}</span>
+<span class="fstat-no" title="function not covered" >          function(error){</span>
+<span class="cstat-no" title="statement not covered" >            console.log(error);</span>
+          },
+<span class="fstat-no" title="function not covered" >          function(notify){</span>
+<span class="cstat-no" title="statement not covered" >          console.log(notify);</span>
+          }
           );
   		},
       transclude:"true",
@@ -300,7 +321,7 @@ angular.module('myApp.directives', []).
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 25 2014 22:12:04 GMT+0530 (India Standard Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 31 2014 10:01:28 GMT+0530 (India Standard Time)</div>
 </div>
 
 <script src="../prettify.js"></script>

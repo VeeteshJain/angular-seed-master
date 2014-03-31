@@ -41,7 +41,7 @@ var $scopee = null;
       ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     });
 
-    console.log(sscope);
+    //console.log(sscope);
     //sscope.$apply();
     //sscopee.$apply();
   });
@@ -50,9 +50,9 @@ var $scopee = null;
     //expect(App.superSmartFunction()).toBe(42);
     //expect(true).toBe(false);
     //console.log(sscope);
-    spyOn(sscope,"testJquery").andCallThrough();
+    /*spyOn(sscope,"testJquery").andCallThrough();
     sscope.testJquery();
-    expect(sscope.testJquery).toHaveBeenCalled();
+    expect(sscope.testJquery).toHaveBeenCalled();*/
   });
 
   xit("will change header text", function() {

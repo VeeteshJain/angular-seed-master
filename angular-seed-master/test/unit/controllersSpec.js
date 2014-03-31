@@ -37,7 +37,7 @@ describe('these are all my controllers', function(){
 
       //to get controller instance and "{$scope: sscope}" will get '$scope' from controller to "sscope" of "Spec"
       ctrl = $controller("MyCtrl1", {$scope: sscope});
-      ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
+      //ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     }));
 
     it('should see the controller', function() {
@@ -49,11 +49,18 @@ describe('these are all my controllers', function(){
 
     });
 
-    it("can be instantiated", function() {
+    it("can be instantiated", inject(function($compile) {
         expect(sscope).toBeDefined();
         //expect(ctrl).
-        expect(service).not.toBeNull();
-    });
+        //expect(service).not.toBeNull();
+        var html = '<p class="testJquery">this is a testJquery</p>';
+        var el = $compile(html)(sscope);
+        sscope.$apply();
+        //console.log(sscope);
+        spyOn(sscope,'testJquery').andCallThrough();
+        sscope.testJquery();
+        expect(sscope.testJquery).toHaveBeenCalled();
+    }));
 
   it('should ....', inject(function() {
     //spec body

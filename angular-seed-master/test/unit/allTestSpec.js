@@ -10,7 +10,7 @@ describe("A spy", function() {
     foo = {
       setBar: function(value) {
         bar = value;
-        console.log("aa1 "+bar);
+        //console.log("aa1 "+bar);
       },
       getBar: function() {
         return bar;
@@ -32,9 +32,9 @@ describe("A spy", function() {
     //spyOn(foo, 'getBar').and.callThrough();
 
     foo.setBar(123);
-    console.log("ZZ1 "+bar);
+    //console.log("ZZ1 "+bar);
     foo.setBar(456, 'another param');
-    console.log("ZZ2 "+bar);
+    //console.log("ZZ2 "+bar);
   });
 
   it("is useful for comparing arguments", function() {

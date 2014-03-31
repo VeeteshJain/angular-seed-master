@@ -46,7 +46,7 @@ module.exports = function(config){
             'karma-firefox-launcher',
             'karma-jasmine',
             'karma-jasmine',
-             'karma-requirejs',
+             'karma-requirejs',//npm install -g karma-cli
              'karma-coverage',//npm install -g karma-coverage@0.1.2
              'karma-junit-reporter',
              'karma-phantomjs-launcher',
