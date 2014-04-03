@@ -19,7 +19,7 @@ angular.module('myApp.controllers', ['serverDataAccessService',"myService"]).
   .controller('MyCtrl2', ['$scope',"serverDataAccessService",function($scope,serverDataAccessService) {
     // $scope.name = 'bob';
     //console.log("cont 2");
-    $scope.ddata = serverDataAccessService.getDataJson("emp.json").then(function(data){
+    $scope.ddata = serverDataAccessService.getDataJson("").then(function(data){
     //console.log("MM "+$scope.ddata.firstName);
     $scope.ddata = data;
     //console.log($scope.ddata.firstName);

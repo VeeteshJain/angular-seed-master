@@ -18,14 +18,15 @@ module.exports = function(config){
 
       // code you want to test
       "app/js/jquery_app.js",
-
       // test code
       "test/unit/jquery_appSpec.js",
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
       'test/lib/angular/angular-mocks.js',
       'app/js/**/*.js',
-      'test/unit/*.js'
+      'test/unit/*.js',
+      //html templates(order in which path to html files are places matters)
+      "app/partials/*.html",
     ],
 
     exclude : [
@@ -52,18 +53,30 @@ module.exports = function(config){
              'karma-phantomjs-launcher',
              'karma-chrome-launcher',
              'karma-firefox-launcher',
-             'karma-ie-launcher'
+             'karma-ie-launcher',
+             'karma-ng-html2js-preprocessor'
             ],
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',
       suite: 'unit'
     },
-    preprocessors: { 'app/js/**/*.js': 'coverage' },
+    preprocessors: { 
+      'app/js/**/*.js': 'coverage',
+      'app/partials/*.html': 'ng-html2js'
+  },
     reporters: ['progress','coverage'],
     coverageReporter: {
       type : 'html',
       dir : 'test/coverage/'
+    },
+    ngHtml2JsPreprocessor: {
+      // strip this from the file path
+      stripPrefix: 'public/',
+      // prepend this to the
+      prependPrefix: 'served/',
+      // setting this option will create only a single module that contains templates
+      // from all the files, so you can load them all with module('foo')
+      moduleName: 'foo'
     }
-
 })}

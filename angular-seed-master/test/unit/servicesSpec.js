@@ -24,6 +24,12 @@ describe('service ', function() {
 	var testMyCtrl1 = null;
 	var httpBackend = null;
 	var q = null;
+  var $exceptionHandler,$log;
+
+  beforeEach(angular.mock.module(function($exceptionHandlerProvider) {
+    //console.log($exceptionHandlerProvider.$get());
+    $exceptionHandlerProvider.mode('log');
+  }));
 
 	//to include angular module in jasmine framework
   	beforeEach(angular.mock.module('myApp.services'));
@@ -50,18 +56,33 @@ describe('service ', function() {
       testMyCtrl1 = $controller('MyCtrl1',{$scope:$scope} );
     }));
 
-  it('testing for rootValGetterService() service 1' , function(){
+    afterEach(function(){
+      httpBackend.verifyNoOutstandingExpectation();
+      httpBackend.verifyNoOutstandingRequest();
+    });
+
+  it('test',inject(function($exceptionHandler,$log){
+    var httpBackendReturn = '{"firstName": "John","lastName": "Smith","age": 25,"address": {"streetAddress": "21 2nd Street","city": "New York","state": "NY","postalCode": 10021},"phoneNumbers": [{"type": "home","number": "212 555-1234"},{"type": "fax","number": "646 555-4567"}]}';
+    httpBackend.expectGET('data/emp.json').respond(200,httpBackendReturn);
+
+    testServerDataAccessService.getDataJson("emp.json");
+    httpBackend.flush();
+    //$log.assertEmpty();
+    //console.log($exceptionHandler.errors);
+  }));
+  xit('testing for rootValGetterService() service 1' , function(){
 
   		var value = "12345";
   		//service function all and checking expected result retured by that function
-        expect(testRootValGetterService.getVal()).toBe(value);
+      expect(testRootValGetterService.getVal()).toBe(value);
   });
 
-  it('testing for serverDataAccessService() service 2' , function(){
+  xit('testing for serverDataAccessService() service 2' , function(){
 
   		//this is for what backend should reply
   		var httpBackendReturn = '{"firstName": "John","lastName": "Smith","age": 25,"address": {"streetAddress": "21 2nd Street","city": "New York","state": "NY","postalCode": 10021},"phoneNumbers": [{"type": "home","number": "212 555-1234"},{"type": "fax","number": "646 555-4567"}]}';
-  		httpBackend.expectGET('data/emp.json').respond(httpBackendReturn);
+  		//httpBackend.expectGET('data/emp.json').respond(500,httpBackendReturn);//for error or fail
+      httpBackend.expectGET('data/emp.json').respond(200,httpBackendReturn);//for success
 
         expect(testServerDataAccessService.getDataJson).toBeDefined();
         expect(testServerDataAccessService.postDataJson).toBeDefined();

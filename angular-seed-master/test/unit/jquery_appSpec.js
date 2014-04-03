@@ -38,7 +38,7 @@ var $scopee = null;
 
       //to get controller instance and "{$scope: sscope}" will get '$scope' from controller to "sscope" of "Spec"
       ctrl = $controller("MyCtrl1", {$scope: sscope});
-      ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
+      //ctrl2 = $controller("MyCtrl2", {$scope: sscopee});
     });
 
     //console.log(sscope);

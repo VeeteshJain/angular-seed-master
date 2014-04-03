@@ -32,7 +32,7 @@ angular.module('myApp.directives', ['myApp.services']).
           );
   		},
       transclude:"true",
-      template:'<h1 ng-transclude></h1><select ng-model="data" ng-options="d.val for d in data"></select>',
+      templateUrl:'app/partials/searchDirective.html',
   		scope:{
         
   		}//to give directive an isolated scope

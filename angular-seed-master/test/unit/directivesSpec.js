@@ -8,6 +8,7 @@ describe('directives', function() {
   var $scope;
   var $sscope;
   var $q;
+  var $httpBackend;
   var mock=null;
   beforeEach(function(){
     mock = {
@@ -18,6 +19,7 @@ describe('directives', function() {
     };
 
     //angular.mock.module('myApp.services');
+    module('foo');
     angular.mock.module('myApp.directives');
     angular.mock.module(function($provide) {
         $provide.value('version', 'TEST_VER');
@@ -43,6 +45,7 @@ describe('directives', function() {
   });
     angular.mock.inject(function($injector){
       $q = $injector.get('$q');
+      $httpBackend = $injector.get('$httpBackend');
     });
   });
   afterEach(function(){
@@ -51,17 +54,12 @@ describe('directives', function() {
 
   describe('app-version', function() {
     it('should print current version', function() {
-      
-
-      
       expect(element.text()).toEqual('TEST_VER');
       //console.log(element.text());
-
     });
   });
 
-  xdescribe('search directive', function() {
-
+  describe('search directive', function() {
     it('should be compiled', function() {
 
         var searchServiceMock = {
@@ -81,7 +79,7 @@ describe('directives', function() {
       /*angular.mock.inject(function(searchService){
         console.log(searchService.getPersons("abc"));
       });*/
-
+      //$httpBackend.expectGET('').
       angular.mock.inject(function($compile, $rootScope) {
       $sscope = $rootScope.$new();
       elementt = angular.element('<div search>search</div>');

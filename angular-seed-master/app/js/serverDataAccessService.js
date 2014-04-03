@@ -3,6 +3,12 @@
 
 		//var test=12;
 		 getDataJson = function(url){
+		 	//url = undefined;
+		 	if(url == undefined || url == '')
+		 	{
+		 		var message = "url not valid";
+		 		throw message;
+		 	}
 			var deferred = $q.defer();
 			var data=null;
 			$http.get("data/"+url).success(function(data,status) {
@@ -14,6 +20,8 @@
 				deferred.resolve(data);
 				data = rootValGetterService.getVal();
 				//deferred.resolve(data);
+		}).error(function(error){
+			console.log("error");
 		});
 		return deferred.promise;
 	}
